@@ -27,3 +27,71 @@ body {
   line-height: 1;
   letter-spacing: -1px;
 }
+
+/*=====   ======*/
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.section .graphics{
+	height: 500px;
+}
+
+.section .design{
+	height: 500px;
+}
+
+.staggerAniG li{
+	opacity: 0;
+}
+
+.staggerAniW li{
+	opacity: 0;
+}
+
+.thumbBox{
+
+	width: 100px;
+	height: 100px;
+	box-shadow: 0px 3px 4px #888888;
+
+}
+
+ul li .thumbBox{
+	
+	list-style: inline;
+    float: left;
+	margin: 5px;
+}
+
+ .parallax-container {
+      height: 400px;
+    }
+
+/* Bar Chart */
+
+.chart rect {
+  stroke: white;
+  fill: steelblue;
+}
+
+.chart text {
+  font: 13px sans-serif;
+  fill: red;
+}
+
+.chart rect.first {
+  stroke: none;
+  fill: #f69525;
+}
+
+.chart rect.second {
+  font: 10px sans-serif;
+  color: black;
+  stroke: none;
+  fill: #0f71b7;
+}

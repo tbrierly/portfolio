@@ -12,11 +12,13 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+	<link href="styles/style.css" type="text/css" rel="stylesheet"/>
     <!-- endbuild -->
     
     <!-- build:js scripts/vendor/modernizr.js -->
@@ -28,17 +30,107 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Modernizr</li>
-        <li>jQuery</li>
-      </ul>
+<div class="parallax-container">
+    <div class="parallax"><img src="images/top.jpg"></div>
+  </div>
+  
+<div class="section no-pad-bot" id="index-banner">
+
+  <div class="container">
+  <div id="index-banner" class="parallax-container">
+      <br><br>
+      <h1 class="header center blue-text">Thomas Brierly's Portfolio</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Skeleton framework with some d3.js animation</h5>
+      </div>
+      <br><br>
+		<div class="row center">
+        <h5 class="header col s12 light">Education experience goes here</h5>
+      </div>
+  </div>
+	<div class="row center">
+	<!-- d3.js animation -->
+		<div class="col s12">
+			<p>Below contains the graphs of my experiences</p>
+		</div>
+		
+		<div class="col s6">
+			<div class="section graphics">
+				<h5>Graphics</h5>
+				<p>Stuff</p>
+				<div id="chartD"></div>
+				
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="section design">
+				<h5>Design</h5>
+				<p>Stuff</p>
+				<div id="chartW"></div>
+			</div>
+		</div>
+	<!-- Gallery -->
+		<div class="col s12">
+			<p>Below contains a gallery of projects</p>
+		</div>
+		<div class="col s6">
+			<div class="section">
+				<h5>Graphics</h5>
+				<p>Stuff</p>
+				<div class="thumbCont">
+					<ul class="staggerAniG">
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="section">
+				<h5>Web Design</h5>
+				<p>Stuff</p>
+				<div class="thumbCont">
+					<ul class="staggerAniW">
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox">Test</div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
     </div>
+  </div>
+	
+</div>
+
+
+
+<div id="test"><p  style="display: none">Testing scrollfire</p></div>
+
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+			
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            by Thomas Brierly
+            </div>
+          </div>
+        </footer>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+	
+	
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -47,17 +139,163 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
+	
+
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/materialize/bin/materialize.js"></script>
+    <script src="/bower_components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+	
+
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/jquery.scrollfire.js"></script>
     <!-- endbuild -->
+	
+	<script>
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+	
+//Create Chart//
+
+function makeChartD(){
+var data = [95, 90];
+
+var bar_w = 55,
+    bar_h = 250,
+    label_padding = 26,
+    bar_padding = 25;
+  
+var x = d3.scale.linear()
+      .domain([0, 1])
+      .range([0, bar_w + bar_padding]);
+  
+var y = d3.scale.linear()
+       .domain([0, d3.max(data)])
+       .rangeRound([0, bar_h - label_padding]); // rangeRound to avoid antialiasing artifacts.
+
+var chart = d3.select("#chartD").append("svg")
+     .attr("class", "chart")
+     .attr("width", (bar_w * data.length) + bar_padding)
+     .attr("height", bar_h);
+
+chart.selectAll("rect")
+ .data(data)
+ .enter()
+ .append("rect")
+ .attr("x", function(d, i) { return x(i) - .5; })
+ .attr("y", function(d) { return bar_h - .5; })
+ .attr("width", bar_w)
+ .attr("class", function(d,i) {return i==0?'first':'second'})
+ .transition().delay(function (d,i){ return i * 600;})
+ .duration(800)
+ .attr("height", function(d) { return y(d); })
+ .attr("y", function(d) { return bar_h - y(d) - .5; });
+
+chart.selectAll("text")
+ .data(data)
+ .enter().append("text")
+ .attr("width", bar_w)
+ .attr("x", function(d, i) { return x(i) + bar_w/2; })
+ .attr("y", function(d) { return bar_h - y(d) - 15; })
+ .attr("text-anchor", "middle")
+ .transition().delay(function (d,i){ return i * 600;})
+ .duration(800)
+ .text(function(d) { return d + '%'; });
+}
+
+
+function makeChartW(){
+var data = [65, 80];
+
+var bar_w = 55,
+    bar_h = 250,
+    label_padding = 26,
+    bar_padding = 25;
+  
+var x = d3.scale.linear()
+      .domain([0, 1])
+      .range([0, bar_w + bar_padding]);
+  
+var y = d3.scale.linear()
+       .domain([0, d3.max(data)])
+       .rangeRound([0, bar_h - label_padding]); // rangeRound to avoid antialiasing artifacts.
+
+var chart = d3.select("#chartW").append("svg")
+     .attr("class", "chart")
+     .attr("width", (bar_w * data.length) + bar_padding)
+     .attr("height", bar_h);
+
+chart.selectAll("rect")
+ .data(data)
+ .enter()
+ .append("rect")
+ .attr("x", function(d, i) { return x(i) - .5; })
+ .attr("y", function(d) { return bar_h - .5; })
+ .attr("width", bar_w)
+ .attr("class", function(d,i) {return i==0?'first':'second'})
+ .transition().delay(function (d,i){ return i * 600;})
+ .duration(800)
+ .attr("height", function(d) { return y(d); })
+ .attr("y", function(d) { return bar_h - y(d) - .5; });
+
+chart.selectAll("text")
+ .data(data)
+ .enter().append("text")
+ .attr("width", bar_w)
+ .attr("x", function(d, i) { return x(i) + bar_w/2; })
+ .attr("y", function(d) { return bar_h - y(d) - 15; })
+ .attr("text-anchor", "middle")
+ .transition().delay(function (d,i){ return i * 600;})
+ .duration(800)
+ .text(function(d) { return d + '%'; });
+}
+
+//Scroll Fire//
+var options = [
+
+	{selector: '#test', offset: 50, callback: function(el) {
+        Materialize.toast("This is our ScrollFire Demo!", 1500 );
+      } },
+
+	{selector: '#chartD', offset: 50, callback: function(el) {
+		console.log("test");
+        makeChartD();
+      } },
+	  
+	{selector: '#chartW', offset: 50, callback: function(el) {
+        makeChartW();
+      } },
+	
+	{selector: '.staggerAniG', offset: 50, callback: function(el) {
+        Materialize.showStaggeredList($(el));
+      } },
+	  
+	  {selector: '.staggerAniW', offset: 50, callback: function(el) {
+        Materialize.showStaggeredList($(el));
+      } },
+	
+    {selector: '#test', offset: 50, callback: function(el) {
+	
+	
+    $( "p" ).show( "slow" );
+	 
+    }},
+	
+  ];
+  
+  Materialize.scrollFire(options);
+ 
+
+
+	</script>
+	
   </body>
 </html>
