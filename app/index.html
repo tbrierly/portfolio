@@ -57,15 +57,15 @@
 		<div class="col s6">
 			<div class="section graphics">
 				<h5>Graphics</h5>
-				<p>Stuff</p>
+				<p>These are my skill levels using graphic programs</p>
 				<div id="chartD"></div>
 				
 			</div>
 		</div>
 		<div class="col s6">
 			<div class="section design">
-				<h5>Design</h5>
-				<p>Stuff</p>
+				<h5>Web Design</h5>
+				<p>Here are all the languages I have experience with</p>
 				<div id="chartW"></div>
 			</div>
 		</div>
@@ -76,15 +76,13 @@
 		<div class="col s6">
 			<div class="section">
 				<h5>Graphics</h5>
-				<p>Stuff</p>
+				<p></p>
 				<div class="thumbCont">
 					<ul class="staggerAniG">
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="The front of an invitation card" width="100" src="images/card.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Concept Art" width="100" src="images/concept.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="UI mock-up for a educational prototype tablet" width="100" src="images/mockUp.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Logo design for a high school" width="100" src="images/designLogo.png"></div></li>
 					</ul>
 				</div>
 			</div>
@@ -92,15 +90,10 @@
 		<div class="col s6">
 			<div class="section">
 				<h5>Web Design</h5>
-				<p>Stuff</p>
+				<p></p>
 				<div class="thumbCont">
 					<ul class="staggerAniW">
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Web redesign for an existing site" width="400" src="images/web.jpg"></div></li>
 					</ul>
 				</div>
 			</div>
@@ -169,14 +162,6 @@ $(document).ready(function(){
 
 //Scroll Fire//
 var options = [
-
-	{selector: '#test', offset: 50, callback: function(el) {
-        Materialize.toast("This is our ScrollFire Demo!", 1500 );
-      } },
-
-	
-	  
-	
 	
 	{selector: '.staggerAniG', offset: 50, callback: function(el) {
         Materialize.showStaggeredList($(el));
@@ -185,13 +170,6 @@ var options = [
 	  {selector: '.staggerAniW', offset: 50, callback: function(el) {
         Materialize.showStaggeredList($(el));
       } },
-	
-    {selector: '#test', offset: 50, callback: function(el) {
-	
-	
-    $( "p" ).show( "slow" );
-	 
-    }},
 	
   ];
   
