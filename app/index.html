@@ -57,15 +57,15 @@
 		<div class="col s6">
 			<div class="section graphics">
 				<h5>Graphics</h5>
-				<p>Stuff</p>
+				<p>These are my skill levels using graphic programs</p>
 				<div id="chartD"></div>
 				
 			</div>
 		</div>
 		<div class="col s6">
 			<div class="section design">
-				<h5>Design</h5>
-				<p>Stuff</p>
+				<h5>Web Design</h5>
+				<p>Here are all the languages I have experience with</p>
 				<div id="chartW"></div>
 			</div>
 		</div>
@@ -76,15 +76,13 @@
 		<div class="col s6">
 			<div class="section">
 				<h5>Graphics</h5>
-				<p>Stuff</p>
+				<p></p>
 				<div class="thumbCont">
 					<ul class="staggerAniG">
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="The front of an invitation card" width="100" src="images/card.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Concept Art" width="100" src="images/concept.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="UI mock-up for a educational prototype tablet" width="100" src="images/mockUp.jpg"></div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Logo design for a high school" width="100" src="images/designLogo.png"></div></li>
 					</ul>
 				</div>
 			</div>
@@ -92,15 +90,10 @@
 		<div class="col s6">
 			<div class="section">
 				<h5>Web Design</h5>
-				<p>Stuff</p>
+				<p></p>
 				<div class="thumbCont">
 					<ul class="staggerAniW">
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
-						<li><div class="thumbBox">Test</div></li>
+						<li><div class="thumbBox"><img class="materialboxed" data-caption="Web redesign for an existing site" width="400" src="images/web.jpg"></div></li>
 					</ul>
 				</div>
 			</div>
@@ -165,114 +158,10 @@ $(document).ready(function(){
 	
 //Create Chart//
 
-function makeChartD(){
-var data = [95, 90];
 
-var bar_w = 55,
-    bar_h = 250,
-    label_padding = 26,
-    bar_padding = 25;
-  
-var x = d3.scale.linear()
-      .domain([0, 1])
-      .range([0, bar_w + bar_padding]);
-  
-var y = d3.scale.linear()
-       .domain([0, d3.max(data)])
-       .rangeRound([0, bar_h - label_padding]); // rangeRound to avoid antialiasing artifacts.
-
-var chart = d3.select("#chartD").append("svg")
-     .attr("class", "chart")
-     .attr("width", (bar_w * data.length) + bar_padding)
-     .attr("height", bar_h);
-
-chart.selectAll("rect")
- .data(data)
- .enter()
- .append("rect")
- .attr("x", function(d, i) { return x(i) - .5; })
- .attr("y", function(d) { return bar_h - .5; })
- .attr("width", bar_w)
- .attr("class", function(d,i) {return i==0?'first':'second'})
- .transition().delay(function (d,i){ return i * 600;})
- .duration(800)
- .attr("height", function(d) { return y(d); })
- .attr("y", function(d) { return bar_h - y(d) - .5; });
-
-chart.selectAll("text")
- .data(data)
- .enter().append("text")
- .attr("width", bar_w)
- .attr("x", function(d, i) { return x(i) + bar_w/2; })
- .attr("y", function(d) { return bar_h - y(d) - 15; })
- .attr("text-anchor", "middle")
- .transition().delay(function (d,i){ return i * 600;})
- .duration(800)
- .text(function(d) { return d + '%'; });
-}
-
-
-function makeChartW(){
-var data = [65, 80];
-
-var bar_w = 55,
-    bar_h = 250,
-    label_padding = 26,
-    bar_padding = 25;
-  
-var x = d3.scale.linear()
-      .domain([0, 1])
-      .range([0, bar_w + bar_padding]);
-  
-var y = d3.scale.linear()
-       .domain([0, d3.max(data)])
-       .rangeRound([0, bar_h - label_padding]); // rangeRound to avoid antialiasing artifacts.
-
-var chart = d3.select("#chartW").append("svg")
-     .attr("class", "chart")
-     .attr("width", (bar_w * data.length) + bar_padding)
-     .attr("height", bar_h);
-
-chart.selectAll("rect")
- .data(data)
- .enter()
- .append("rect")
- .attr("x", function(d, i) { return x(i) - .5; })
- .attr("y", function(d) { return bar_h - .5; })
- .attr("width", bar_w)
- .attr("class", function(d,i) {return i==0?'first':'second'})
- .transition().delay(function (d,i){ return i * 600;})
- .duration(800)
- .attr("height", function(d) { return y(d); })
- .attr("y", function(d) { return bar_h - y(d) - .5; });
-
-chart.selectAll("text")
- .data(data)
- .enter().append("text")
- .attr("width", bar_w)
- .attr("x", function(d, i) { return x(i) + bar_w/2; })
- .attr("y", function(d) { return bar_h - y(d) - 15; })
- .attr("text-anchor", "middle")
- .transition().delay(function (d,i){ return i * 600;})
- .duration(800)
- .text(function(d) { return d + '%'; });
-}
 
 //Scroll Fire//
 var options = [
-
-	{selector: '#test', offset: 50, callback: function(el) {
-        Materialize.toast("This is our ScrollFire Demo!", 1500 );
-      } },
-
-	{selector: '#chartD', offset: 50, callback: function(el) {
-		console.log("test");
-        makeChartD();
-      } },
-	  
-	{selector: '#chartW', offset: 50, callback: function(el) {
-        makeChartW();
-      } },
 	
 	{selector: '.staggerAniG', offset: 50, callback: function(el) {
         Materialize.showStaggeredList($(el));
@@ -281,13 +170,6 @@ var options = [
 	  {selector: '.staggerAniW', offset: 50, callback: function(el) {
         Materialize.showStaggeredList($(el));
       } },
-	
-    {selector: '#test', offset: 50, callback: function(el) {
-	
-	
-    $( "p" ).show( "slow" );
-	 
-    }},
 	
   ];
   
