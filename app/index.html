@@ -141,6 +141,7 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/materialize/bin/materialize.js"></script>
     <script src="/bower_components/d3/d3.js"></script>
+    <script src="/bower_components/jquery.scrollfire/jquery.scrollfire.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 	
@@ -148,36 +149,8 @@
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
-	<script type="text/javascript" src="scripts/jquery.scrollfire.js"></script>
+	
     <!-- endbuild -->
-	
-	<script>
-$(document).ready(function(){
-  $('.parallax').parallax();
-});
-	
-//Create Chart//
-
-
-
-//Scroll Fire//
-var options = [
-	
-	{selector: '.staggerAniG', offset: 50, callback: function(el) {
-        Materialize.showStaggeredList($(el));
-      } },
-	  
-	  {selector: '.staggerAniW', offset: 50, callback: function(el) {
-        Materialize.showStaggeredList($(el));
-      } },
-	
-  ];
-  
-  Materialize.scrollFire(options);
- 
-
-
-	</script>
 	
   </body>
 </html>
