@@ -73,24 +73,30 @@ ul li .thumbBox{
 
 /* Bar Chart */
 
-.chart rect {
-  stroke: white;
-  fill: steelblue;
+.svg-wrapper {
+  max-width: 100%;
 }
 
-.chart text {
-  font: 13px sans-serif;
-  fill: red;
+svg {
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
-.chart rect.first {
-  stroke: none;
-  fill: #f69525;
+rect {
+  shape-rendering: crispEdges;
 }
 
-.chart rect.second {
-  font: 10px sans-serif;
-  color: black;
-  stroke: none;
-  fill: #0f71b7;
+.axis text {
+  fill: #666;
+  font: 16px sans-serif;
 }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+
+/*==== Pie Chart ====*/

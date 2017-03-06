@@ -1,23 +1,276 @@
 $(document).ready(function(){
   $('.parallax').parallax();
   $('.materialboxed').materialbox();
-});
-	
+  Materialize.scrollFire(options);
+  generateData(length);
+}); 
+
 //Create Chart//
+var data = [ 25, 50, 75, 100 ];
+
+	// graph variables
+	var	xScale				   ,
+		yScale				   ,
+		xAxis				   ,
+		yAxis				   ;
+
+	// chart dimensions
+	var margin   = { top: 20, right: 30, bottom: 20, left: 70 },
+        width    =  $('#chart').width() - margin.left - margin.right,
+        height   =  $(window).height() / 3.5 - margin.top - margin.bottom;
+
+	// color palette for graph
+	var colors = [ '#4398B5', '#ADC4CC', '#92B06A', '#E09D2A', '#DE5F32' ]; 
+
+	// svg object for graph
+	var svg;
+
+	var data;
+
+		$(document).ready(function(){
+
+			drawGraph();
+
+		});
+		
+function drawGraph() {
+
+		xScale = d3.scaleBand()
+				   .domain( d3.range( data.length ) )
+				   .range( [ 0, width ] )
+				   .padding( 0.1 );
+
+		var yMax = d3.max( data );
+
+	    yScale = d3.scaleLinear()
+			   .domain( [ 0, yMax  ] )
+			   .range( [ height, 0 ] );
+
+
+			xAxis = d3.axisBottom( xScale );
+			yAxis = d3.axisLeft( yScale );
+
+			var yTicks 	     = yAxis.ticks(5),
+				yTicksFormat = yAxis.tickFormat( d3.format( ',' ) );
+
+			svg = d3.select( '#chart svg' )
+						.attr( 'width'  , width + margin.left + margin.right  )
+						.attr( 'height' , height + margin.top + margin.bottom )
+						.append( 'g' )
+							.attr( 'transform', 'translate(' + margin.left + ',' + margin.top + ')' );
+
+			svg.selectAll( 'rect' )
+			   .data( data )
+			   .enter()
+			   .append( 'rect' )
+			       .attr('x', function ( d, i ) {
+			       		return xScale( i );
+			       })
+				   .attr('y', function( d, i ) {
+					  	return yScale( 0 );
+				   })
+				   .attr( 'height', function( d ) {
+					   return height - yScale( 0 );
+				   })
+				   .attr( 'width', xScale.bandwidth() )
+				   .attr('fill', function( d, i ) {
+					   return colors[ i % 5 ];
+				   })
+				   .transition()
+				   .duration( 1000 )
+				   .on( 'end', function() {
+					  d3.selectAll( '#chart rect' )
+					  .append( 'title' )
+					  .text( function( d ) {
+						  return d3.format( ',' )( d );
+					  });
+				   })
+				   .attr( 'y', function( d, i ) {
+					   return yScale( d );
+				   })
+				   .attr( 'height', function( d ) {
+					   return height - yScale( d );
+				   });
+
+			svg.append( 'g' )
+			   .attr( 'class', 'yAxis' )
+			   .attr( 'transform', 'translate(0, ' + (-1) + ')')
+			   .call( yAxis );
+
+		}
+
+		$( window ).resize( function() {
+
+			width    = $('#chart').width() - margin.left - margin.right,
+	        height   = $(window).height() / 3.5 - margin.top - margin.bottom;
+
+			xScale.range( [ 0, width ] );
+			d3.select( 'svg' )
+			  .attr( 'width', width + margin.left + margin.right );
+
+			d3.selectAll( '#chart rect' )
+			  .attr( 'x', function( d, i ){
+				  return xScale( i );
+			  })
+			  .attr( 'width', xScale.bandwidth())
+			  .attr( 'fill', function( d, i ) {
+				  return colors[ i % 5 ];
+			  });
+
+		});
+
+	*/	
+	
+function generateData(length) {
+  var data = [
+  {
+    name: "Html",
+    value: 95
+  },
+  {
+    name: "Css",
+    value: 95
+  },
+  {
+    name: "Javascript",
+    value: 85
+  },
+  {
+    name: "jQuery",
+    value: 80
+  },
+  {
+    name: "Php",
+    value: 70
+  },
+  {
+    name: "Git",
+    value: 70
+  },
+  {
+    name: "Ajax",
+    value: 60
+  }
+];
+  
+ /* function randomValue() {
+	  var skills = [20, 50];
+   return Math.floor(Math.random() * 100 + 1);
+
+  }
+  
+  for (var i = 0; i < length; i++) {
+    data.push({
+      'name': 'Week ' + (i + 1),
+      'value': randomValue()
+    });
+  }
+  */
+  return data;
+}
 
 
 
+// load 20 items of random data
+var data = generateData(7);
+
+// set the dimensions and margins of the graph
+var margin = {top: 40, right: 20, bottom: 50, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// define transition
+var t = d3.transition()
+			.duration(750)
+			.ease(d3.easeQuadOut);
+
+// set the ranges
+
+// bar color scale
+var color = d3.interpolateRdYlGn;
+var colorScale = d3.scaleLinear()
+  .range([1, 0])
+  .domain([d3.max(data, function(d) { return d.value; }), 0]);
+
+// x-axis scale
+var x = d3.scaleBand()
+          .range([0, width])
+          .domain(data.map(function(d) { return d.name; }))
+          .padding(0.05);
+// y-axis scale
+var y = d3.scaleLinear()
+          .range([height, 0])
+          .domain([0, d3.max(data, function(d) { return d.value; })]);
+   
+// create svg element
+var svg = d3.select("#chart").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+  .append("g")
+  .attr("transform", 
+        "translate(" + margin.left + "," + margin.top + ")");
+
+// create x-axis
+var xAxis = svg.append("g")
+  .attr("class", "x-axis axis")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+.append("text")
+  .attr("x", width)
+  .attr("y", 30)
+  .attr("dy", ".71em")
+  .style("text-anchor", "end")
+  .text("Skills");
+
+// create y-axis
+var yAxis = svg.append("g")
+  .attr("class", "y-axis axis")
+  .call(d3.axisLeft(y).ticks(10, "s"))
+.append("text")
+  .attr("y", -20)
+  .attr("dy", ".71em")
+  .style("text-anchor", "end")
+  .text("Awesomeness Meter");
+
+// create bars
+var bars = svg.selectAll(".bar")
+  .data(data)
+  .enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d) { return x(d.name); })
+  .attr("width", x.bandwidth())
+  .attr("y", function(d) { return y(0); })
+	.attr("height", height - y(0))
+	.transition(t)
+  .attr("y", function(d) { return y(d.value); })
+  .attr("height", function(d) { return height - y(d.value); })
+  .attr('fill', '#0071b9')
+  .attr('fill-opacity', function(d) {
+    return colorScale(d.value);
+  });
+
+
+	
 //Scroll Fire//
 var options = [
 	
-	{selector: '.staggerAniG', offset: 50, callback: function(el) {
+	{selector: '.staggerAniG', offset: 200, callback: function(el) {
         //Materialize.showStaggeredList($(el));
+		$('.staggerAniG').addClass('animated bounceInRight');
+
       } },
 	  
-	  {selector: '.staggerAniW', offset: 50, callback: function(el) {
+	  {selector: '.staggerAniW', offset: 200, callback: function(el) {
         //Materialize.showStaggeredList($(el));
+		$('.staggerAniW').addClass('animated bounceInRight');
       } },
 	
   ];
   
-  Materialize.scrollFire(options);
+  
+
+//Pie code//
+
+
+
