@@ -29,87 +29,129 @@
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
-<div class="parallax-container">
+<div class="navbar-fixed">
+	<nav>
+		<div id="home" class="nav-wrapper teal darken-3 section scrollspy">
+		  <a href="#home" class="brand-logo center">TB</a>
+		  <ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a href="#education">Education</a></li>
+			<li><a href="#skills">Skills</a></li>
+			<li><a href="#gallery">Gallery</a></li>
+		  </ul>
+		</div>
+	 </nav>	
+</div>
+	 
+<div id="index-banner" class="parallax-container">
+	<div class="centerBox">
     <div class="parallax"><img src="images/top.jpg"></div>
+	<h1 class="header center white-text text-lighten-2">Thomas Brierly</h1>
+	<div class="row center">
+        <h5 class="header col s12 white-text text-lighten-2">Web Developer & Designer</h5>
+      </div>
+	</div>
   </div>
   
-<div class="section no-pad-bot light-green darken-4" id="index-banner">
 
-  <div class="container teal darken-4">
-  <div id="index-banner" class="parallax-container green darken-4">
-      <br><br>
+
+
+
+   
 	  
-      <h1 class="header center blue-text">Thomas Brierly's Portfolio</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Skeleton framework with some d3.js animation</h5>
-      </div>
-      <br><br>
-		<div class="row center green lighten-2">
-        <h5 class="header col s12 light">Education experience goes here</h5>
-      </div>
-  </div>
+      
+	<div  class="row center green lighten-2 section scrollspy">
+        <h3 id="education" class="header col s12 light section scrollspy">Education</h3>
+		<div class="col s6">
+			<p class="edu">University of Central Florida</p>
+			<p class="edu">Orlando, FL</p>
+			<p class="edu">B.A. Web Design, 2014-2017</p>
+		</div>
+		<div class="col s6">
+			<p class="edu">Valencia College</p>
+			<p class="edu">Orlando, FL</p>
+			<p class="edu">A.A. General Studies, 2004-2007</p>
+		</div>
+	</div>
+
 	<div class="row center">
 	<!-- d3.js Chart -->
-		<div class="col s12">
-			<p>Below contains the graphs of my experiences</p>
-		</div>
-		
-		<div class="col s6">
-			<div class="section graphics">
-				<h5>Graphics</h5>
-				<p>These are my skill levels using graphic programs</p>
-				<div id="chartD"></div>
-				
-			</div>
-		</div>
-		<div class="col s6">
-			<div class="section design">
-				<h5>Web Design</h5>
-				<p>Here are all the languages I have experience with</p>
-				<div id="chartW"></div>
-			</div>
-		</div>
+		<h3 id="skills" class="header col s12 light section scrollspy">Skills</h3>
+		<div class="svg-wrapper" id="chart"></div>
 	<!-- Gallery -->
 		<div class="col s12">
-			<p>Below contains a gallery of projects</p>
+			<h3 id="gallery" class="header col s12 light section scrollspy">Gallery</h3>
 		</div>
 		<div class="col s6">
 			<div class="section">
-				<h5>Graphics</h5>
-				<p></p>
-				<div class="thumbCont">
-					<ul class="staggerAniG">
-						<li><div class="thumbBox"><img class="materialboxed" data-caption="The front of an invitation card" width="100" src="images/card.jpg"></div></li>
-						<li><div class="thumbBox"><img class="materialboxed" data-caption="Concept Art" width="100" src="images/concept.jpg"></div></li>
-						<li><div class="thumbBox"><img class="materialboxed" data-caption="UI mock-up for a educational prototype tablet" width="100" src="images/mockUp.jpg"></div></li>
-						<li><div class="thumbBox"><img class="materialboxed" data-caption="Logo design for a high school" width="100" src="images/designLogo.png"></div></li>
-					</ul>
+				<h5>Art & Design</h5>
+				<div class="card leftAni">
+					<div class="card-image waves-effect waves-block waves-light">
+					  <img class="activator" src="images/designLogo.png">
+					</div>
+					<div class="card-content">
+					  <span class="card-title activator grey-text text-darken-4">Gibsonton Logo<i class="material-icons right">more</i></span>
+					  
+					</div>
+					<div class="card-reveal">
+					  <span class="card-title grey-text text-darken-4">Gibsonton Logo<i class="material-icons right">close</i></span>
+					  <p>Logo made for a highschool basball team.</p>
+					</div>
+				</div>
+				<div class="card leftAni">
+					<div class="card-image waves-effect waves-block waves-light">
+					  <img class="activator" src="images/mockUp.jpg">
+					</div>
+					<div class="card-content">
+					  <span class="card-title activator grey-text text-darken-4">UI Mock-up<i class="material-icons right">more</i></span>
+					  
+					</div>
+					<div class="card-reveal">
+					  <span class="card-title grey-text text-darken-4">Educational Tablet<i class="material-icons right">close</i></span>
+					  <p>Created several UI mockups for a prototype tablet used for early education.</p>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col s6">
-			<div class="section">
-				<h5>Web Design</h5>
-				<p></p>
-				<div class="thumbCont">
-					<ul class="staggerAniW">
-						<li><div class="thumbBox"><img class="materialboxed" data-caption="Web redesign for an existing site" width="400" src="images/web.jpg"></div></li>
-					</ul>
+		<h5>Web</h5>
+			<div class="card rightAni">
+				<div class="card-image waves-effect waves-block waves-light">
+				  <img class="activator" src="images/web.jpg">
+				</div>
+				<div class="card-content">
+				  <span class="card-title activator grey-text text-darken-4">Sailing Club in Central Florida<i class="material-icons right">more</i></span>
+				  
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title grey-text text-darken-4">Central Florida Sailing Club<i class="material-icons right">close</i></span>
+				  <p>This was a redesign of an existing website.</p>
+				</div>
+			</div>
+			<div class="card rightAni">
+				<div class="card-image waves-effect waves-block waves-light">
+				  <img class="activator" src="images/sparrow.jpg">
+				</div>
+				<div class="card-content">
+				  <span class="card-title activator grey-text text-darken-4">Sparrow Security<i class="material-icons right">more</i></span>
+				  
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title grey-text text-darken-4">Sparrow Security<i class="material-icons right">close</i></span>
+				  <p>A petition site for a new agency seeking public funding</p>
 				</div>
 			</div>
 		</div>
     </div>
-  </div>
+
 	
-</div>
+
 
 
 
 <div id="test"><p  style="display: none">Testing scrollfire</p></div>
-<div class="svg-wrapper" id="chart"></div>
 
-<footer class="page-footer">
+
+<footer class="page-footer teal darken-3">
           <div class="container">
             <div class="row">
 			

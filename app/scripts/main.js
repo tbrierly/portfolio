@@ -1,10 +1,13 @@
 $(document).ready(function(){
   $('.parallax').parallax();
   $('.materialboxed').materialbox();
-  Materialize.scrollFire(options);
-  generateData(length);
-}); 
+  
+   $('.scrollspy').scrollSpy();
+   $('.leftAni').hide("slow");
+   $('.rightAni').hide("slow");
 
+}); 
+$('.leftAni').show('slow');
 //Create Chart//
 
 function generateData(length) {
@@ -27,11 +30,11 @@ function generateData(length) {
   },
   {
     name: 'Php',
-    value: 70
+    value: 75
   },
   {
     name: 'Git',
-    value: 70
+    value: 50
   },
   {
     name: 'Ajax',
@@ -56,7 +59,7 @@ function generateData(length) {
 }
 
 
-
+function draw(){
 // load 20 items of random data
 var data = generateData(7);
 
@@ -117,7 +120,7 @@ var yAxis = svg.append('g')
   .attr('y', -20)
   .attr('dy', '.71em')
   .style('text-anchor', 'end')
-  .text('Awesomeness Meter');
+  .text('Awesomeness-Meter');
 
 // create bars
 var bars = svg.selectAll('.bar')
@@ -135,26 +138,37 @@ var bars = svg.selectAll('.bar')
   .attr('fill-opacity', function(d) {
     return colorScale(d.value);
   });
-
+}
 
 	
 //Scroll Fire//
 var options = [
 	
-	{selector: '.staggerAniG', offset: 200, callback: function(el) {
+	{selector: '#chart', offset: 500, callback: function(el) {
         //Materialize.showStaggeredList($(el));
-		$('.staggerAniG').addClass('animated bounceInRight');
+		draw();
 
       } },
-	  
-	  {selector: '.staggerAniW', offset: 200, callback: function(el) {
+	
+	{selector: '.leftAni', offset: 500, callback: function() {
         //Materialize.showStaggeredList($(el));
-		$('.staggerAniW').addClass('animated bounceInRight');
+		$('.leftAni').show("slow");
+		
+		$('.leftAni').addClass('animated bounceInLeft');
+		
+	
+      } },
+	  
+	  {selector: '.rightAni', offset: 500, callback: function() {
+        //Materialize.showStaggeredList($(el));
+		$('.rightAni').show("slow");
+		$('.rightAni').addClass('animated bounceInRight');
+		
       } },
 	
   ];
   
-  
+  Materialize.scrollFire(options);
 
 //Pie code//
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Diplomata+SC|Merriweather+Sans:400,700,800|Rubik+Mono+One');
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -6,9 +8,38 @@
 }
 
 body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #b2dfdb;
+  
   color: #333;
+}
+
+.centerBox{
+	font-family: 'Rubik Mono One', sans-serif;
+	text-shadow: 2px 2px #3e2723;
+}
+
+h3{
+	font-family: 'Rubik Mono One', sans-serif;
+	text-shadow: 1px 1px #3e2723;
+}
+
+p {
+	font-weight: 400;
+}
+
+#index-banner{
+	
+}
+
+.centerBox{
+	position: relative;
+top: 30%;
+}
+
+.edu{
+	font-family: 'Merriweather', sans-serif;
+	font-size: 30px;
+	font-weight: 700;
 }
 
 .hero-unit {
@@ -45,14 +76,6 @@ body {
 	height: 500px;
 }
 
-.staggerAniG li{
-	
-}
-
-.staggerAniW li{
-	
-}
-
 .thumbBox{
 
 	
@@ -68,7 +91,7 @@ ul li .thumbBox{
 }
 
  .parallax-container {
-      height: 400px;
+      height: 500px;
     }
 
 /* Bar Chart */
@@ -97,6 +120,10 @@ rect {
   fill: none;
   stroke: #666;
   shape-rendering: crispEdges;
+}
+
+#chart{
+	min-height: 500px;
 }
 
 /*==== Pie Chart ====*/
